@@ -4,7 +4,6 @@ import { Link, useNavigate, Navigate } from "react-router-dom";
 import { Layout, Row, Col, Anchor, Modal, Button, Dropdown, Card, Image, Space } from "antd";
 import LogoutDropdownComponent from "./LogoutDropdownComponent";
 const { Header, Footer, Sider, Context, Content } = Layout;
-import logo from "./logo.png";
 
 function HeaderComponent({ data, fetchArticles, fetchArticlesProject, getDataProject }) {
   const navigate = useNavigate();
