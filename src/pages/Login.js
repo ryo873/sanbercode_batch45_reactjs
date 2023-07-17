@@ -4,6 +4,7 @@ import axios from "axios";
 import React from "react";
 import { Layout, Form, Input, Col, Row, Button, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
+import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
 const { Content } = Layout;
 
 function Login({ children }) {
@@ -91,6 +92,7 @@ function Login({ children }) {
         ]}
         closable={false}
       >
+        <CloseOutlined />
         <p>{error}</p>
       </Modal>
       <Modal
@@ -103,7 +105,8 @@ function Login({ children }) {
         ]}
         closable={false}
       >
-        <p>Login Berhasil</p>
+        <CheckOutlined />
+        <p>Selamat Login Sukses</p>
       </Modal>
     </>
   );

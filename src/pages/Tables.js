@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Space, Table, Tag } from "antd";
+import { Layout, Space, Table, Tag, Button, Row, Col } from "antd";
 import { useNavigate, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Tables({ children, fetchArticlesProject, getDataProject }) {
   //   const [token, setToken] = useState();
@@ -83,6 +84,13 @@ function Tables({ children, fetchArticlesProject, getDataProject }) {
     <>
       <Layout>
         {children}
+        <Row>
+          <Col span={8} offset={16} style={{ padding: "10px" }}>
+            <Button>
+              <Link to="/create">Create Product</Link>
+            </Button>
+          </Col>
+        </Row>
         <Table columns={columns} dataSource={data} />
       </Layout>
     </>

@@ -8,6 +8,7 @@ import AllProduct from "./pages/AllProduct";
 import Tables from "./pages/Tables";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CreateProduct from "./pages/CreateProduct";
 import "./App.css";
 
 function App() {
@@ -63,6 +64,14 @@ function App() {
               <Register>
                 <HeaderComponent data={data} fetchArticles={fetchArticles} fetchArticlesProject={fetchArticlesProject} getDataProject={getDataProject} />
               </Register>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <CreateProduct>
+                <HeaderComponent data={data} fetchArticles={fetchArticles} fetchArticlesProject={fetchArticlesProject} getDataProject={getDataProject} />
+              </CreateProduct>
             }
           />
         </Routes>
