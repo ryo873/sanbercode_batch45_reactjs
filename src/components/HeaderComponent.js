@@ -24,7 +24,9 @@ function HeaderComponent({ data, fetchArticles, fetchArticlesProject, getDataPro
   return (
     <Header style={headerStyle}>
       <Row>
-        <Col span={8}>Trustshop</Col>
+        <Col span={8}>
+          <img src="/shop.png" alt="shop-logo" style={{ width: "30%", marginTop: "1rem", borderRadius: "5%" }} />
+        </Col>
         <Col span={8}>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <Link to="/" style={{ color: "white", fontWeight: "bolder" }}>

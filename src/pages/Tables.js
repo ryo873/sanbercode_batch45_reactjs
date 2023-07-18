@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Space, Table, Tag, Button, Row, Col } from "antd";
+import axios from "axios";
+import { Layout, Space, Table, Button, Row, Col, Modal } from "antd";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Tables({ children, fetchArticlesProject, getDataProject }) {
-  //   const [token, setToken] = useState();
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [getIdDelete, setIdDelete] = useState(0);
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetchArticlesProject();
   }, []);
 
-  //   localStorage.setItem("token", "ok");
-  //   localStorage.removeItem("token");
-  //   useEffect(() => setToken(localStorage.getItem("token")), [token]);
+  const navigate = useNavigate();
+
+  const handleOk = async () => {
+    try {
+      const response = await axios.delete(`https://api-project.amandemy.co.id/api/final/products/${getIdDelete}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      alert("Berhasil menghapus data");
+      setOpen(false);
+      fetchArticlesProject();
+    } catch (error) {
+      alert(error.response.data.info);
+    }
+  };
 
   if (localStorage.getItem("token") === null) {
     return <Navigate to="/login" />;
@@ -71,8 +92,16 @@ function Tables({ children, fetchArticlesProject, getDataProject }) {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a href={`/getProduct/${record.item}`}>Ubah</a>
-          <a>Hapus</a>
+          <Button href={`/getProduct/${record.item}`}>Ubah</Button>
+          <Button
+            danger
+            onClick={() => {
+              showModal();
+              setIdDelete(record.item);
+            }}
+          >
+            Hapus
+          </Button>
         </Space>
       ),
     },
@@ -93,6 +122,10 @@ function Tables({ children, fetchArticlesProject, getDataProject }) {
         </Row>
         <Table columns={columns} dataSource={data} />
       </Layout>
+      <Modal title="Konfirmasi Hapus" open={open} onOk={handleOk} onCancel={handleCancel}>
+        <p style={{ fontSize: "20px" }}>Anda Yakin Ingin Menghapus?</p>
+        <small>Data yang dihapus tidak bisa dikembalikan</small>
+      </Modal>
     </>
   );
 }
