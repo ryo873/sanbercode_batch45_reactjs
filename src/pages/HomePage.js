@@ -73,7 +73,7 @@ function HomePage({ data, fetchArticles, fetchArticlesProject, getDataProject, c
                 <Col span={6}>
                   <Card title={`Product ${index + 1}`} size="small" extra={<a href={`/detail/${item.id}`}>Detail</a>} style={{ height: "71vh", marginRight: "5px", marginLeft: "5px", boxShadow: "5px 5px rgba(0,0,0,0.5)" }}>
                     <Image src={item.image_url} height={200} />
-                    <h1>{item.description?.substring(0, 45) + "..."}</h1>
+                    <h1>{item.description.length >= 45 ? item.description?.substring(0, 45) + "..." : item.description}</h1>
                     {item.harga_diskon === 0 ? (
                       <h2>{item.harga_display}</h2>
                     ) : (

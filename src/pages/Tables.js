@@ -71,7 +71,7 @@ function Tables({ children, fetchArticlesProject, getDataProject }) {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a>Ubah {record.Nama}</a>
+          <a href={`/getProduct/${record.item}`}>Ubah</a>
           <a>Hapus</a>
         </Space>
       ),
@@ -86,7 +86,7 @@ function Tables({ children, fetchArticlesProject, getDataProject }) {
         {children}
         <Row>
           <Col span={8} offset={16} style={{ padding: "10px" }}>
-            <Button>
+            <Button type="primary">
               <Link to="/create">Create Product</Link>
             </Button>
           </Col>

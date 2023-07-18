@@ -20,7 +20,6 @@ function LogoutDropdownComponent({ fetchArticles, fetchArticlesProject }) {
           },
         }
       );
-      alert("logout berhasil");
     } catch (error) {
       console.log(error);
     } finally {

@@ -9,6 +9,7 @@ import Tables from "./pages/Tables";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateProduct from "./pages/CreateProduct";
+import UpdateProduct from "./pages/UpdateProduct";
 import "./App.css";
 
 function App() {
@@ -72,6 +73,14 @@ function App() {
               <CreateProduct>
                 <HeaderComponent data={data} fetchArticles={fetchArticles} fetchArticlesProject={fetchArticlesProject} getDataProject={getDataProject} />
               </CreateProduct>
+            }
+          />
+          <Route
+            path="/getProduct/:id"
+            element={
+              <UpdateProduct>
+                <HeaderComponent data={data} fetchArticles={fetchArticles} fetchArticlesProject={fetchArticlesProject} getDataProject={getDataProject} />
+              </UpdateProduct>
             }
           />
         </Routes>
